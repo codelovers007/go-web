@@ -1,7 +1,15 @@
 package handlers
 
-import "fmt"
+import (
+	"net/http"
 
-func handler() {
-	fmt.Printf("My first handler")
+	"github.com/codelovers007/go-web-1/pkg/render"
+)
+
+func Home(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "home.page.html")
+}
+
+func About(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "about.page.html")
 }

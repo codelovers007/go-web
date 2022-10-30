@@ -1,7 +1,16 @@
 package render
 
-import "fmt"
+import (
+	"fmt"
+	"html/template"
+	"net/http"
+)
 
-func render() {
-	fmt.Printf("My first render")
+func RenderTemplate(w http.ResponseWriter, tmpl string) {
+	parsedTemplate, _ := template.ParseFiles("./templates/" + tmpl)
+	err := parsedTemplate.Execute(w, nil)
+	if err != nil {
+		fmt.Println("error parsing template:", err)
+		return
+	}
 }
